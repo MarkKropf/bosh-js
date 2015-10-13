@@ -1,0 +1,19 @@
+{
+  "name": "bosh-js",
+  "version": "0.0.1",
+  "description": "A Bosh client library in Javascript",
+  "main": "bosh.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarkKropf/bosh-js.git"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/MarkKropf/bosh-js/issues"
+  },
+  "homepage": "https://github.com/MarkKropf/bosh-js#readme"
+}

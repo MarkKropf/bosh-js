@@ -1,0 +1,7 @@
+{
+  "host": "bosh.example.com",
+  "port": "25555",
+  "user": "admin",
+  "pass": "admin",
+  "ca": "./example.pem"
+}
