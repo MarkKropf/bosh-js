@@ -29,6 +29,18 @@ module.exports = function(host, port, user, pass, cafile) {
     });
   };
 
+  this.locks = function(cb) {
+    boshRequest('/locks',parent=this,function(data) {
+      cb(data);
+    });
+  };
+
+  this.cloudConfigs = function(cb) {
+    boshRequest('/cloud_configs?limit=100',parent=this,function(data) {
+      cb(data);
+    });
+  };
+
   this.releases = function(input, cb) {
     var release = input.release || null;
     if(release!==null) {
