@@ -23,6 +23,25 @@ module.exports = function(host, port, user, pass, cafile) {
     });
   };
 
+  this.deployments = function(cb) {
+    boshRequest('/deployments',parent=this,function(data) {
+      cb(data);
+    });
+  };
+
+  this.releases = function(input, cb) {
+    var release = input.release || null;
+    if(release!==null) {
+      path = '/releases/' + release;
+      console.log("DEBUG: " + path);
+    } else {
+      path = '/releases';
+    }
+    boshRequest(path,parent=this,function(data) {
+      cb(data);
+    });
+  };
+
   function parseBundle(cafile) {
     var fs = require('fs');
     var ca, cert, chain, i, len, line;

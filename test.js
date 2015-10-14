@@ -19,3 +19,24 @@ bosh.stemcells(function(data) {
     console.log("Stemcells: " + data[0].name);
   }
 });
+
+bosh.deployments(function(data) {
+  if(data) {
+    console.log("Deployments: " + data[0].name);
+  }
+});
+
+bosh.releases({},function(data) {
+  if(data) {
+    console.log("Releases: " + data[0].name);
+  }
+});
+
+bosh.releases({release: 'bosh-ui'},function(data) {
+  if(data.packages) {
+    console.log("Jobs: ");
+    for (var key in data.packages) {
+      console.log("Name: " + data.packages[key].name + " sha1: " + data.packages[key].sha1 + " version: " + data.packages[key].version);
+    }
+  }
+});
