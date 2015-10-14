@@ -1,9 +1,10 @@
-module.exports = function(host, port, user, pass, cafile) {
+module.exports = function(host, port, user, pass, cafile, sslValidate) {
   this.host = host;
   this.port = port;
   this.user = user;
   this.pass = pass;
-  this.ca = parseBundle(cafile);
+  if(cafile) { this.ca = parseBundle(cafile); } else { this.ca = null; }
+  this.sslValidate = sslValidate;
 
   this.info = function(cb) {
     boshRequest('/info',parent=this,function(data) {
@@ -45,7 +46,6 @@ module.exports = function(host, port, user, pass, cafile) {
     var release = input.release || null;
     if(release!==null) {
       path = '/releases/' + release;
-      console.log("DEBUG: " + path);
     } else {
       path = '/releases';
     }
@@ -84,6 +84,7 @@ module.exports = function(host, port, user, pass, cafile) {
       path: path,
       method: 'GET',
       ca: parent.ca,
+      rejectUnauthorized: parent.sslValidate,
       headers: {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:24.0) Gecko/20100101 Firefox/24.0',
         'Content-Type': 'application/x-www-form-urlencoded'

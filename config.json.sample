@@ -3,5 +3,6 @@
   "port": "25555",
   "user": "admin",
   "pass": "admin",
+  "sslValidate": true,
   "ca": "./example.pem"
 }

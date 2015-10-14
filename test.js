@@ -1,6 +1,6 @@
 var config = require('./config.json');
 var Bosh = require('./bosh.js');
-var bosh = new Bosh(config.host,config.port,config.user,config.pass,config.ca);
+var bosh = new Bosh(config.host,config.port,config.user,config.pass,config.ca,config.sslValidate);
 
 bosh.info(function(data) {
   console.log("Director Name: " + data.name);
